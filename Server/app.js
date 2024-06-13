@@ -2,9 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const postRoutes = require("./routes/posts");
+const cors = require("cors");
 const config = require("./config");
 
 const app = express();
+app.use(cors());
 
 // Middleware
 app.use(bodyParser.json());
@@ -14,10 +16,7 @@ app.use("/api/posts", postRoutes);
 
 // Connect to MongoDB Atlas
 mongoose
-  .connect(config.mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(config.mongoURI)
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.error(err));
 

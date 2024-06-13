@@ -1,12 +1,14 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js",
-  ],
+// tailwind.config.js
+
+module.exports = {
+  mode: "jit", // Just-In-Time mode for faster build times
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"], // Purge unnecessary styles in production
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {}, // Extend the default Tailwind CSS theme here
   },
-  plugins: [require("flowbite/plugin")],
+  variants: {
+    extend: {}, // Extend Tailwind CSS variants here
+  },
+  plugins: [], // Additional Tailwind CSS plugins
 };
