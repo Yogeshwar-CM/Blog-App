@@ -68,7 +68,7 @@ const Navbar = () => {
   };
 
   const handleNewPostSubmit = () => {
-    fetch("http://localhost:3000/api/posts", {
+    fetch("https://blog-app-server-rust.vercel.app:3000/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
