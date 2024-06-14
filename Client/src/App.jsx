@@ -36,7 +36,7 @@ export default function App() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("https://blog-app-server-rust.vercel.app:3000/api/posts");
+      const response = await fetch("https://blog-app-8bka.onrender.com/api/posts");
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -46,7 +46,7 @@ export default function App() {
 
   const deletePost = async (postId) => {
     try {
-      await fetch(`https://blog-app-server-rust.vercel.app:3000/api/posts/${postId}`, {
+      await fetch(`https://blog-app-8bka.onrender.com/api/posts${postId}`, {
         method: "DELETE",
       });
       setPosts(posts.filter((post) => post._id !== postId));
