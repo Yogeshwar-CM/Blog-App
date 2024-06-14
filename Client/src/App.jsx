@@ -121,10 +121,10 @@ export default function App() {
 
       {showPostPopup && selectedPost && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50">
-          <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-3/4 h-3/4 text-white overflow-y-auto">
+          <div className="bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-lg shadow-lg w-full sm:w-3/4 h-3/4 sm:h-auto text-white overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">{selectedPost.title}</h2>
             <p
-              className="text-gray-300 mt-10 mb-4"
+              className="text-gray-300 mt-4 mb-4"
               dangerouslySetInnerHTML={renderPostContent(selectedPost.content)}
             />
             <p className="text-gray-500 mb-4">Author: {selectedPost.author}</p>
