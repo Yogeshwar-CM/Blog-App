@@ -70,7 +70,7 @@ const Navbar = () => {
   const handleNewPostSubmit = () => {
     // Trim the title and content to remove leading and trailing whitespace
     const trimmedTitle = newPost.title.trim();
-    const trimmedContent = newPost.content.trim();
+    const trimmedContent = newPost.content; // No trimming for content
 
     // Check if title or content is empty after trimming
     if (!trimmedTitle || !trimmedContent) {
@@ -78,7 +78,7 @@ const Navbar = () => {
       return;
     }
 
-    fetch("https://blog-app-8bka.onrender.com/api/posts", {
+    fetch("https://your-api-url/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,6 +97,8 @@ const Navbar = () => {
         setShowNewPostPopup(false);
         // Optionally, you can clear the form fields
         setNewPost({ title: "", content: "" });
+        // Fetch updated posts
+        fetchPosts();
       })
       .catch((error) => {
         console.error("Error adding new post:", error);

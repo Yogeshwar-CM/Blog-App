@@ -6,16 +6,10 @@ const Post = require("../models/Post");
 router.post("/", async (req, res) => {
   const { title, content, author, userId } = req.body;
   try {
-    // Create a new Post instance
     const newPost = new Post({ title, content, author, userId });
-
-    // Save the new post to the database
     await newPost.save();
-
-    // Return the newly created post as JSON response
     res.status(201).json(newPost);
   } catch (error) {
-    // Handle any errors that occur during saving
     res.status(500).json({ message: error.message });
   }
 });
