@@ -78,7 +78,7 @@ const Navbar = () => {
       return;
     }
 
-    fetch("https://your-api-url/api/posts", {
+    fetch("https://blog-app-8bka.onrender.com/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,8 +97,7 @@ const Navbar = () => {
         setShowNewPostPopup(false);
         // Optionally, you can clear the form fields
         setNewPost({ title: "", content: "" });
-        // Fetch updated posts
-        fetchPosts();
+        location.reload();
       })
       .catch((error) => {
         console.error("Error adding new post:", error);
@@ -193,7 +192,7 @@ const Navbar = () => {
                 value={newPost.content}
                 onChange={handleNewPostChange}
                 placeholder="Content"
-                rows="10"
+                rows="12"
                 className="w-full px-4 py-3 mb-4 text-gray-900 bg-gray-700 border border-gray-300 rounded-md focus:outline-none resize-none text-lg"
               />
               <div className="flex justify-end">

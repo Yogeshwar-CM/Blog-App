@@ -68,6 +68,12 @@ export default function App() {
     setShowPostPopup(false);
   };
 
+  const renderPostContent = (content) => {
+    // Replace newline characters with <br> tags
+    const formattedContent = content.replace(/\n/g, "<br>");
+    return { __html: formattedContent };
+  };
+
   return (
     <div className="bg-gray-900 text-white min-h-screen">
       <Navbar />
@@ -80,9 +86,12 @@ export default function App() {
               className="bg-gray-800 rounded-lg shadow-md p-4 relative text-gray-300"
             >
               <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-400 mb-2">
-                {post.content.slice(0, 100)}...
-              </p>
+              <p
+                className="text-gray-400 mb-2"
+                dangerouslySetInnerHTML={renderPostContent(
+                  post.content.slice(0, 100) + "..." // Limit content length
+                )}
+              />
               <p className="text-gray-500 mb-2">Author: {post.author}</p>
               <p className="text-gray-500 mb-2">
                 Created At: {new Date(post.createdAt).toLocaleString()}
@@ -112,9 +121,12 @@ export default function App() {
 
       {showPostPopup && selectedPost && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-3/4 h-3/4 text-white overflow-y-auto">
+          <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-3/4 h-3/4 text-white overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">{selectedPost.title}</h2>
-            <p className="text-gray-300 mb-4">{selectedPost.content}</p>
+            <p
+              className="text-gray-300 mt-10 mb-4"
+              dangerouslySetInnerHTML={renderPostContent(selectedPost.content)}
+            />
             <p className="text-gray-500 mb-4">Author: {selectedPost.author}</p>
             <p className="text-gray-500 mb-4">
               Created At: {new Date(selectedPost.createdAt).toLocaleString()}
