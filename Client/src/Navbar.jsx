@@ -68,14 +68,24 @@ const Navbar = () => {
   };
 
   const handleNewPostSubmit = () => {
+    // Trim the title and content to remove leading and trailing whitespace
+    const trimmedTitle = newPost.title.trim();
+    const trimmedContent = newPost.content.trim();
+
+    // Check if title or content is empty after trimming
+    if (!trimmedTitle || !trimmedContent) {
+      console.error("Title or content cannot be empty");
+      return;
+    }
+
     fetch("https://blog-app-8bka.onrender.com/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: newPost.title,
-        content: newPost.content,
+        title: trimmedTitle,
+        content: trimmedContent,
         author: user.displayName,
         userId: user.uid,
       }),
@@ -116,7 +126,7 @@ const Navbar = () => {
         {/* Profile Picture or Google Sign-in Button */}
         {user ? (
           // User is signed in - Show profile dropdown
-          <div className="relative">
+          <div className="relative z-50">
             {/* Profile Picture */}
             <button
               className="flex items-center space-x-2 focus:outline-none"
@@ -165,24 +175,24 @@ const Navbar = () => {
 
         {/* New Post Popup */}
         {showNewPostPopup && (
-          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-            <div className="bg-gray-800 p-4 rounded-lg shadow-lg w-full max-w-md text-white">
-              <h2 className="text-lg font-semibold mb-4">New Post</h2>
+          <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-40">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-3/4 h-3/4 text-white overflow-auto">
+              <h2 className="text-2xl font-semibold mb-4">New Post</h2>
               <input
                 type="text"
                 name="title"
                 value={newPost.title}
                 onChange={handleNewPostChange}
                 placeholder="Title"
-                className="w-full px-3 py-2 mb-3 text-gray-900 bg-gray-700 border border-gray-300 rounded-md focus:outline-none"
+                className="w-full px-4 py-3 mb-4 text-gray-900 bg-gray-700 border border-gray-300 rounded-md focus:outline-none text-lg"
               />
               <textarea
                 name="content"
                 value={newPost.content}
                 onChange={handleNewPostChange}
                 placeholder="Content"
-                rows="4"
-                className="w-full px-3 py-2 mb-3 text-gray-900 bg-gray-700 border border-gray-300 rounded-md focus:outline-none resize-none"
+                rows="10"
+                className="w-full px-4 py-3 mb-4 text-gray-900 bg-gray-700 border border-gray-300 rounded-md focus:outline-none resize-none text-lg"
               />
               <div className="flex justify-end">
                 <button

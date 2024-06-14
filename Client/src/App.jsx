@@ -36,7 +36,9 @@ export default function App() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("https://blog-app-8bka.onrender.com/api/posts");
+      const response = await fetch(
+        "https://blog-app-8bka.onrender.com/api/posts"
+      );
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -46,7 +48,7 @@ export default function App() {
 
   const deletePost = async (postId) => {
     try {
-      await fetch(`https://blog-app-8bka.onrender.com/api/posts${postId}`, {
+      await fetch(`https://blog-app-8bka.onrender.com/api/posts/${postId}`, {
         method: "DELETE",
       });
       setPosts(posts.filter((post) => post._id !== postId));
@@ -110,7 +112,7 @@ export default function App() {
 
       {showPostPopup && selectedPost && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50">
-          <div className="bg-gray-800 p-4 rounded-lg shadow-lg w-full max-w-2xl text-white overflow-y-auto">
+          <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-3/4 h-3/4 text-white overflow-y-auto">
             <h2 className="text-2xl font-bold mb-4">{selectedPost.title}</h2>
             <p className="text-gray-300 mb-4">{selectedPost.content}</p>
             <p className="text-gray-500 mb-4">Author: {selectedPost.author}</p>
