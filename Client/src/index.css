@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.boxout {
+  position: absolute;
+  top: 10%;
+  height: 84vh;
+  overflow-y: scroll;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 100vw;
+}
+
+.close {
+  position: fixed;
+  top: 10%;
+}

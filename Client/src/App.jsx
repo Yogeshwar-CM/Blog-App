@@ -126,11 +126,8 @@ export default function App() {
       </div>
 
       {showPostPopup && selectedPost && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50 overlay"
-          onClick={handleOverlayClick}
-        >
-          <div className="bg-gray-800 p-4 sm:p-6 lg:p-10 rounded-lg shadow-lg w-full sm:w-3/4 h-3/4 sm:h-auto text-white overflow-y-auto">
+        <div className="boxout bg-gray-900" onClick={handleOverlayClick}>
+          <div className="boxin">
             <h2 className="text-2xl font-bold mb-4">{selectedPost.title}</h2>
             <p
               className="text-gray-300 mt-4 mb-4"
@@ -153,7 +150,7 @@ export default function App() {
             <div className="flex justify-end">
               <button
                 onClick={closePostPopup}
-                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md"
+                className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-md close"
               >
                 Close
               </button>
