@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import Navbar from "./Navbar";
+import Prototype from "./Prototype";
 
 export default function App() {
   const [posts, setPosts] = useState([]);
@@ -158,6 +159,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <Prototype />
     </div>
   );
 }
